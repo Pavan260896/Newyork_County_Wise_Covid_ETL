@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgresql
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=1234
+    volumes:
+      - ..\Postgresql\:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  webserver:
+    build: .
+    depends_on:
+      - postgres
+    container_name: airflow
+    restart: always
+    volumes: 
+      - .\dags:/usr/local/airflow/dags
+    ports: 
+      - 8080:8080
+networks:
+  default:
+    name: airflow-network    

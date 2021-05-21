@@ -1,4 +1,4 @@
-# Take_Home_Egen
+# 
 Instructions for Execution
 
 Option1: Multithreaded Python application for ETL Process
